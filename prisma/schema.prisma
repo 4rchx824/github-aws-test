@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-    provider = "mysql"
+    provider = "cockroachdb"
     url      = env("DATABASE_URL")
 
     // If you have enabled foreign key constraints for your database, remove this line.
@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Post {
-    id        Int      @id @default(autoincrement())
+    id        Int      @id @default(sequence())
     name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
